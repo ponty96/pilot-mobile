@@ -97,6 +97,8 @@ export default class LoginScreen extends Component {
         // for now just route
         const email =  this.state.emailAddress;
         const password =  this.state.password;
+        console.log('clicked')
+        Actions.contact_screen()
     }
     render(){
         return (
