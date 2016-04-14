@@ -9,7 +9,8 @@ import React,{
     TouchableHighlight,
     Image,
     ListView,
-    Dimensions
+    Dimensions,
+    PropTypes
 } from 'react-native';
 
 const sideBarActionsList = [
@@ -61,7 +62,20 @@ const styles = StyleSheet.create({
         color:"#fff",
         fontSize:15,
         margin:10
+    },
+    closeBtn:{
+        width:20,
+        height:20,
+        alignSelf:"center",
+        justifyContent:"center",
+        marginBottom:30
+    },
+    closeBtnText:{
+        fontSize:25,
+        textAlign:"center",
+        color:"#fbfbfb"
     }
+
 });
 
 export default class SideDrawer extends Component {
@@ -101,7 +115,20 @@ export default class SideDrawer extends Component {
                     dataSource = {this.state.dataSource}
                     renderRow = {this.renderRow}>
                 </ListView>
+                <TouchableHighlight
+                    onPress={() => this.props.close()}
+                    underlayColor="rgba(255,255, 255, 0.15)"
+                    style={styles.closeBtn}>
+                    <Text style={styles.closeBtnText}>
+                        X
+                    </Text>
+                </TouchableHighlight>
+
             </View>
         )
     }
+}
+
+SideDrawer.propTypes = {
+    open:PropTypes.func.isRequired
 }

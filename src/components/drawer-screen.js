@@ -18,13 +18,20 @@ import {DefaultRenderer} from 'react-native-router-flux';
 const { width, height } = Dimensions.get('window');
 
 export default class Drawer extends Component {
+    openDrawer = () => {
+        this.refs['DRAWER_CONTROLLER'].openDrawer()
+    }
+    closeDrawer = () => {
+        this.refs['DRAWER_CONTROLLER'].closeDrawer()
+    }
     render() {
         return (
             <DrawerLayout
                 drawerWidth={width}
                 drawerPosition={DrawerLayout.positions.Left}
                 drawerLockMode="unlocked"
-                renderNavigationView={() => (<SideDrawer />)}>
+                renderNavigationView={() => (<SideDrawer open={this.openDrawer} close={this.closeDrawer}/>)}
+                ref={'DRAWER_CONTROLLER'}>
                 { this.props.children}
             </DrawerLayout>
         )
