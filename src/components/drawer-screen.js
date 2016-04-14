@@ -27,7 +27,7 @@ export default class Drawer extends Component {
     }
     componentDidUpdate(){
         const isOpen = this.props.isOpen;
-        if(isOpen){
+        if(isOpen == true){
             this.openDrawer()
         } else {
            this.closeDrawer();

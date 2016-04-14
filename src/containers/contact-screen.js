@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     },
     textHeader: {
         textAlign: "center",
-        marginTop: 14,
-        fontSize: 15,
+        marginTop: 12,
+        fontSize: 18,
         fontWeight: "bold"
     },
     textAction: {
@@ -70,6 +70,19 @@ const styles = StyleSheet.create({
     last_name:{
         fontSize:16,
         fontWeight:"bold"
+    },
+    textInput:{
+        borderWidth:1,
+        borderColor:"#e5e5e5",
+        borderRadius:5,
+        height:30,
+        width:(width * 0.9),
+        alignSelf:"center",
+        padding:5,
+        paddingLeft:10,
+        marginBottom:15,
+        color:"#e5e5e5",
+        textAlign:"center"
     }
 
 });
@@ -88,7 +101,11 @@ const dummyContacts = [
     {name:"S", isGroup:true},
     {name: "Scott J"},
     {name:"J", isGroup:true},
-    {name: "Jim Web"}
+    {name: "Jim Web"},
+    {name: "Jim Fanghou"},
+    {name: "Jim Farewell"},
+    {name: "Jim Brick"},
+    {name: "Jim Fushemoceta"}
 ]
 
 
@@ -99,7 +116,8 @@ export default class ContactScreen extends Component {
         this.state = {
             navigationOpen: false,
             contacts: ds,
-            groups:[]
+            groups:[],
+            search_q:""
         }
     }
 
@@ -144,6 +162,14 @@ export default class ContactScreen extends Component {
                         </TouchableHighlight>
                         <Text style={styles.textHeader}>Contacts</Text>
                         <Text style={styles.textAction}>+</Text>
+                    </View>
+                    <View>
+                        <TextInput
+                            placeholder="Search"
+                            text={this.state.search_q}
+                            onChangeText={(text) => this.setState({search_q:text})}
+                            style={styles.textInput}
+                        />
                     </View>
                     <ListView
                         dataSource={this.state.contacts}
