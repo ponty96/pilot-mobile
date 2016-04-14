@@ -15,12 +15,13 @@ import React,{
 import DrawerLayout from 'react-native-drawer-layout';
 import SideDrawer from './side-drawer';
 import {DefaultRenderer} from 'react-native-router-flux';
+const { width, height } = Dimensions.get('window');
 
 export default class Drawer extends Component {
     render() {
         return (
             <DrawerLayout
-                drawerWidth={300}
+                drawerWidth={width}
                 drawerPosition={DrawerLayout.positions.Left}
                 drawerLockMode="unlocked"
                 renderNavigationView={() => (<SideDrawer />)}>

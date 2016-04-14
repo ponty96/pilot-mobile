@@ -8,7 +8,8 @@ import React,{
     StyleSheet,
     TouchableHighlight,
     Image,
-    ListView
+    ListView,
+    Dimensions
 } from 'react-native';
 
 const sideBarActionsList = [
@@ -21,10 +22,14 @@ const sideBarActionsList = [
     {image:require('./../assets/images/jbhatab.png'), name:"Blaine Hatab", count:null, active:false}
 ]
 
+
+const { width, height } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
     body:{
         flex:1,
-        backgroundColor:"#34495e"
+        backgroundColor:"#34495e",
+        paddingTop:(height * 0.042)
     },
     rowSpace:{
         flexDirection:"row",
@@ -44,6 +49,13 @@ const styles = StyleSheet.create({
         height:25,
         width:25,
         margin:5
+
+    },
+    imageB:{
+        height:32,
+        width:32,
+        margin:5,
+        alignSelf:"flex-end"
     },
     text:{
         color:"#fff",
@@ -82,6 +94,9 @@ export default class SideDrawer extends Component {
     render(){
         return (
             <View style={styles.body}>
+                <View>
+                    <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
+                    </View>
                 <ListView
                     dataSource = {this.state.dataSource}
                     renderRow = {this.renderRow}>
