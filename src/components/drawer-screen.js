@@ -9,7 +9,8 @@ import React,{
     TextInput,
     TouchableHighlight,
     Dimensions,
-    DrawerLayoutAndroid
+    DrawerLayoutAndroid,
+    PropTypes
 } from 'react-native';
 
 import DrawerLayout from 'react-native-drawer-layout';
@@ -24,6 +25,18 @@ export default class Drawer extends Component {
     closeDrawer = () => {
         this.refs['DRAWER_CONTROLLER'].closeDrawer()
     }
+    componentDidUpdate(){
+        const isOpen = this.props.isOpen;
+        if(isOpen){
+            this.openDrawer()
+        } else {
+           this.closeDrawer();
+        }
+    }
+
+    shouldComponentUpdate(nextProps,nextState){
+        return nextProps.isOpen != this.props.isOpen
+    }
     render() {
         return (
             <DrawerLayout
@@ -37,3 +50,13 @@ export default class Drawer extends Component {
         )
     }
 }
+
+
+Drawer.propTypes = {
+    isOpen:PropTypes.bool.isRequired
+}
+
+Drawer.defaultProps = {
+    isOpen:false
+}
+
