@@ -11,6 +11,8 @@ import React,{
     Dimensions
 } from 'react-native';
 
+import { Actions } from 'react-native-router-flux' //for routing and stuffs
+
 const { width, height } = Dimensions.get('window');
 const marginTop = height - (height * 0.80);
 
@@ -80,6 +82,7 @@ const styles = StyleSheet.create({
         marginRight:10
     }
 })
+
 export default class LoginScreen extends Component {
     constructor(props){
         super(props);
@@ -87,6 +90,13 @@ export default class LoginScreen extends Component {
             emailAddress:"",
             password:""
         }
+    }
+
+    onSignIn(){
+        //dispatch login action here
+        // for now just route
+        const email =  this.state.emailAddress;
+        const password =  this.state.password;
     }
     render(){
         return (
@@ -113,7 +123,7 @@ export default class LoginScreen extends Component {
                         <TouchableHighlight
                             style={styles.searchButton}
                             underlayColor="#ccc"
-                            onPress={() => console.log('fdddffdfffdffdfdfd')}>
+                            onPress={() => this.onSignIn()}>
                             <Text style={styles.search_btn_text}>Sign In</Text>
                         </TouchableHighlight>
                     </View>
