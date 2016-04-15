@@ -18,6 +18,17 @@ import SideDrawer from './side-drawer';
 import {DefaultRenderer} from 'react-native-router-flux';
 const { width, height } = Dimensions.get('window');
 
+const sideBarActionsList = [
+    {image:require('./../assets/images/conversation.png'), name:"Conversations", count:23},
+    {image:require('./../assets/images/trash.png'), name:"Trash", count:14},
+    {image:require('./../assets/images/later.png'), name:"Later", count:2},
+    {image:require('./../assets/images/archive.png'), name:"Archive", count:0},
+    {image:require('./../assets/images/contacts.png'), name:"Contacts", count:23},
+    {image:require('./../assets/images/settings.png'), name:"Settings", count:null},
+    {image:require('./../assets/images/jbhatab.png'), name:"Blaine Hatab", count:null}
+]
+
+
 export default class Drawer extends Component {
     openDrawer = () => {
         this.refs['DRAWER_CONTROLLER'].openDrawer()
@@ -43,7 +54,10 @@ export default class Drawer extends Component {
                 drawerWidth={width}
                 drawerPosition={DrawerLayout.positions.Left}
                 drawerLockMode="unlocked"
-                renderNavigationView={() => (<SideDrawer open={this.openDrawer} close={this.closeDrawer}/>)}
+                renderNavigationView={() => (<SideDrawer open={this.openDrawer}
+                                                         close={this.closeDrawer}
+                                                         routes={sideBarActionsList}
+                                                         activeRouteId={this.props.activeRouteId}/>)}
                 ref={'DRAWER_CONTROLLER'}>
                 { this.props.children}
             </DrawerLayout>
@@ -53,10 +67,12 @@ export default class Drawer extends Component {
 
 
 Drawer.propTypes = {
-    isOpen:PropTypes.bool.isRequired
-}
+    isOpen:PropTypes.bool.isRequired,
+    activeRouteId: PropTypes.number.isRequired
+};
 
 Drawer.defaultProps = {
-    isOpen:false
-}
+    isOpen:false,
+    activeRouteId:0
+};
 

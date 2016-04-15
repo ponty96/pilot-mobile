@@ -155,7 +155,7 @@ export default class ContactScreen extends Component {
 
     render() {
         return (
-            <Drawer isOpen={this.state.navigationOpen}>
+            <Drawer isOpen={this.state.navigationOpen} activeRouteId={4}>
                 <View style={styles.body}>
                     <View style={styles.rowSpace}>
                         <TouchableHighlight

@@ -13,15 +13,6 @@ import React,{
     PropTypes
 } from 'react-native';
 
-const sideBarActionsList = [
-    {image:require('./../assets/images/conversation.png'), name:"Conversations", count:23, active:true},
-    {image:require('./../assets/images/trash.png'), name:"Trash", count:14, active:false},
-    {image:require('./../assets/images/later.png'), name:"Later", count:2, active:false},
-    {image:require('./../assets/images/archive.png'), name:"Archive", count:0, active:false},
-    {image:require('./../assets/images/contacts.png'), name:"Contacts", count:23, active:false},
-    {image:require('./../assets/images/settings.png'), name:"Settings", count:null, active:false},
-    {image:require('./../assets/images/jbhatab.png'), name:"Blaine Hatab", count:null, active:false}
-]
 
 
 const { width, height } = Dimensions.get('window');
@@ -90,12 +81,11 @@ export default class SideDrawer extends Component {
 
     componentWillMount(){
         this.setState({
-            dataSource:this.state.dataSource.cloneWithRows(sideBarActionsList)
+            dataSource:this.state.dataSource.cloneWithRows(this.props.routes)
         })
     }
-    renderRow = (rowData) => {
-        const rowStyle = rowData.active ? styles.rowSpaceActive : styles.rowSpace
-        console.log(rowStyle)
+    renderRow = (rowData, sectionID, rowID, highlightRow) => {
+        const rowStyle = rowID == this.props.activeRouteId ? styles.rowSpaceActive : styles.rowSpace;
         return (
             <View style={rowStyle}>
                 <View style={styles.row}>
