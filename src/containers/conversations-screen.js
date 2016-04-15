@@ -18,6 +18,44 @@ import Drawer from '../components/drawer-screen';
 import SearchBar from 'react-native-search-bar'
 const { width, height } = Dimensions.get('window');
 
+const dummy_conversations = [
+    {
+        contact_dp:"https://pbs.twimg.com/profile_images/689743404025122817/zz1j-bC2_bigger.png",
+        contact_name:"Josh Kopelman",
+        last_msg:"Hello Nigga",
+        last_activity_time:"Today, 20:35",
+        conversation_id:""
+    },
+    {
+        contact_dp:"https://pbs.twimg.com/profile_images/713824230371160065/v4_qWjqn_bigger.jpg",
+        contact_name:"Thriller",
+        last_msg:"WTF dude!!!",
+        last_activity_time:"Today, 20:22",
+        conversation_id:""
+    },
+    {
+        contact_dp:"https://pbs.twimg.com/profile_images/553711083064541184/9VsY9i09_bigger.jpeg",
+        contact_name:"James Long",
+        last_msg:"You fucking slept with my girlfriend",
+        last_activity_time:"Yesterday, 20:35",
+        conversation_id:""
+    },
+    {
+        contact_dp:"https://pbs.twimg.com/profile_images/622146266823155712/RjmeRIOn_bigger.jpg",
+        contact_name:"Dan Abramov",
+        last_msg:"I love redux, Do IT EVERY DAY!!!!!",
+        last_activity_time:"Yesterday, 03:35",
+        conversation_id:""
+    },
+    {
+        contact_dp:"https://pbs.twimg.com/profile_images/639314683/vjeux-twitter_bigger.PNG",
+        contact_name:"Aaron Ackerman",
+        last_msg:"BLA BLA BLA BLA BLA BLA BLA BLA; Its whatever",
+        last_activity_time:"Yesterday, 20:35",
+        conversation_id:""
+    }
+]
+
 const styles = StyleSheet.create({
     body: {
         flex: 1,
@@ -58,6 +96,49 @@ const styles = StyleSheet.create({
         color:"#666",
         textAlign:"center",
         marginTop: 7.5
+    },
+    rowContainer: {
+        borderBottomWidth: 1,
+        borderBottomColor: "#e5e5e5",
+        padding:15,
+        flexDirection:"row"
+    },
+    gridContainer: {
+        flex: 1,
+        flexDirection: "column",
+        marginLeft: 10,
+        paddingLeft:10
+    },
+    row:{
+        flex:1,
+        flexDirection:"row",
+        alignItems:"stretch",
+        justifyContent:"space-between",
+        alignSelf:"center",
+        width:(width * 0.76),
+        marginTop:5
+
+    },
+    dp: {
+        height: 50,
+        width: 50,
+        margin: 5,
+        alignSelf: "flex-start",
+        borderRadius:25
+    },
+    name: {
+        fontSize:18,
+        color:"#868788",
+        fontWeight:"bold"
+    },
+    time: {
+        fontSize:13,
+        color:"#E0E6EA",
+        marginTop:2.5
+    },
+    last_msg:{
+        marginTop:10,
+        color:"#868788"
     }
 
 });
@@ -65,13 +146,36 @@ const styles = StyleSheet.create({
 export default class ConversationsScreen extends Component {
     constructor(props) {
         super(props);
+
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
+
         this.state = {
             navigationOpen: false,
-            searchText:""
+            searchText:"",
+            conversations:ds
         }
     }
 
+    componentWillMount(){
+        this.setState({
+            conversations: this.state.conversations.cloneWithRows(dummy_conversations)
+        })
+    }
 
+    renderRow = (rowData) => {
+        return (
+            <View style={styles.rowContainer}>
+                <Image source={{uri:rowData.contact_dp}} style={styles.dp}/>
+                <View style={styles.gridContainer}>
+                    <View style={styles.row}>
+                        <Text style={styles.name}>{rowData.contact_name}</Text>
+                        <Text style={styles.time}>{rowData.last_activity_time}</Text>
+                    </View>
+                    <Text style={styles.last_msg}>{rowData.last_msg}</Text>
+                </View>
+            </View>
+        )
+    }
 
     toggleNav = () => {
         this.setState({navigationOpen: !this.state.navigationOpen})
@@ -93,6 +197,10 @@ export default class ConversationsScreen extends Component {
                                     style={styles.textInput}/>
                         <Text style={styles.textAction}>+</Text>
                     </View>
+                    <ListView
+                        dataSource={this.state.conversations}
+                        renderRow={this.renderRow}>
+                    </ListView>
                 </View>
             </Drawer>
         )
