@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         marginTop: 12,
         fontSize: 18,
         fontWeight: "bold",
-        color:"#777"
+        color:"#525455"
     },
     textAction: {
         textAlign: "center",

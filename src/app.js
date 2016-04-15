@@ -8,7 +8,7 @@ import {Actions, Scene, Router, TabBar,  Modal} from 'react-native-router-flux';
 
 import LoginScreen from './containers/login-screen'
 import ContactScreen from './containers/contact-screen'
-
+import ConversationsScreen from './containers/conversations-screen'
 
 const styles = StyleSheet.create({
     container: {
@@ -34,7 +34,7 @@ export default class PilotApp extends Component {
         return (
             <Router style={styles.container} sceneStyle={styles.sceneStyle}>
                 <Scene key="root">
-
+                    <Scene key="conversation_screen" component={ConversationsScreen} title="Conversations" hideNavBar={true}/>
                     <Scene key="contact_screen" component={ContactScreen} title="Contact" hideNavBar={true}/>
                     <Scene key="login_screen" component={LoginScreen} title="Login" hideNavBar={true}/>
                 </Scene>
