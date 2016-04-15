@@ -29,7 +29,7 @@ const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     body:{
         flex:1,
-        backgroundColor:"#34495e",
+        backgroundColor:"#172635",
         paddingTop:(height * 0.042)
     },
     rowSpace:{
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent:"space-between",
         padding:10,
-        backgroundColor:"rgba(255,255, 255, 0.15)"
+        backgroundColor:"#6C9FB8"
     },
     row:{
         flexDirection:"row"
@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
         height:20,
         alignSelf:"center",
         justifyContent:"center",
-        marginBottom:30
+        marginBottom:30,
+        padding:3
     },
     closeBtnText:{
         fontSize:25,

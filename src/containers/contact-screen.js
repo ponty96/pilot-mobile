@@ -38,14 +38,15 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginTop: 12,
         fontSize: 18,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color:"#777"
     },
     textAction: {
         textAlign: "center",
         marginTop: 1,
         fontSize: 32,
         fontWeight: "bold",
-        color: "#1abc9c"
+        color: "#46BD96"
     },
     headSec:{
         margin:12,
@@ -53,23 +54,25 @@ const styles = StyleSheet.create({
     tag:{
         fontSize: 16,
         fontWeight: "bold",
-        color: "#1abc9c"
+        color: "#46BD96"
     },
     rowContainer: {
         borderBottomWidth: 1,
         borderBottomColor: "#e5e5e5",
         padding:15,
-        marginLeft:15,
-        marginRight:15,
+        marginLeft:35,
+        marginRight:35,
         flexDirection:"row"
     },
     first_name:{
         fontSize:16,
-        marginRight:5
+        marginRight:5,
+        color:"#868788"
     },
     last_name:{
         fontSize:16,
-        fontWeight:"bold"
+        fontWeight:"bold",
+        color:"#777"
     },
     textInput:{
         borderWidth:1,
@@ -157,7 +160,7 @@ export default class ContactScreen extends Component {
                     <View style={styles.rowSpace}>
                         <TouchableHighlight
                             onPress={this.toggleNav}
-                            underlayColor="#1abc9c">
+                            underlayColor="#46BD96">
                             <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
                         </TouchableHighlight>
                         <Text style={styles.textHeader}>Contacts</Text>
