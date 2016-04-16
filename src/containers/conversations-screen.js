@@ -89,10 +89,10 @@ const styles = StyleSheet.create({
     },
     textInput:{
         borderWidth:1,
-        borderColor:"#eeeeee",
-        backgroundColor:"#eeeeee",
+        borderColor:"#ccc",
+        backgroundColor:"#ccc",
         height:30,
-        width:(width * 0.6),
+        width:(width * 0.9),
         alignSelf:"center",
         marginBottom:15,
         color:"#666",
@@ -127,6 +127,12 @@ const styles = StyleSheet.create({
         margin: 5,
         alignSelf: "flex-start",
         borderRadius:25
+    },
+    btnIcon:{
+        height: 30,
+        width: 30,
+        alignSelf: "center",
+        marginTop:24
     },
     name: {
         fontSize:18,
@@ -177,28 +183,56 @@ export default class ConversationsScreen extends Component {
         console.log('view', {name,id})
     }
 
+    saveForLater = ({name,id}) => {
+        console.log('call', {name,id})
+    }
+
+    archiveConvo =  ({name,id}) => {
+        console.log('view', {name,id})
+    }
+
     renderRow = (rowData, sectionID, rowID, highlightRow) => {
        const swipeRightButtons = [
             {
                 text:'Call',
-                right:[{
-                    text:'call me',
-                    underlayColor:"#ccc",
-                    onPress:this.call({name:rowData.name,id:rowID})
-                }]
+                backgroundColor:"#4ABD92",
+                underlayColor:"#4ABD92",
+                onPress:this.call({name:rowData.name,id:rowID}),
+                component: <Image style={{flex: 1}} source={require('./../assets/images/phone.png')} style={styles.btnIcon}/>
+
             },
             {
                 text:'Contact',
-                right:[{
-                    text:"Contact me",
-                    underlayColor:"#ccc",
-                    onPress:this.viewContact({name:rowData.name,id:rowID})
-                }]
+                backgroundColor:"#C469D7",
+                underlayColor:"#C469D7",
+                onPress:this.viewContact({name:rowData.name,id:rowID}),
+                component: <Image style={{flex: 1}} source={require('./../assets/images/dp.png')} style={styles.btnIcon}/>
+
             }
         ]
+        const swipeLeftButtons = [
+            {
+                text:'Later',
+                backgroundColor:"#F6BD5E",
+                underlayColor:"#F6BD5E",
+                onPress:this.saveForLater({name:rowData.name,id:rowID}),
+                component: <Image style={{flex: 1}} source={require('./../assets/images/later.png')} style={styles.btnIcon}/>
+
+            },
+            {
+                text:'Archive',
+                backgroundColor:"#6C9FB8",
+                underlayColor:"#6C9FB8",
+                onPress:this.archiveConvo({name:rowData.name,id:rowID}),
+                component: <Image style={{flex: 1}} source={require('./../assets/images/download.png')} style={styles.btnIcon}/>
+
+            }
+        ]
+
         return (
             <Swipeout
                 right={swipeRightButtons}
+                left={swipeLeftButtons}
                 rowID={rowID}
                 sectionID={sectionID}
                 autoClose='true'
@@ -233,11 +267,15 @@ export default class ConversationsScreen extends Component {
                             underlayColor="#46BD96">
                             <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
                         </TouchableHighlight>
+
+
+                        <Text style={styles.textAction}>+</Text>
+                    </View>
+                    <View>
                         <SearchBar  ref="searchBar"
                                     placeholder="Search"
                                     onChangeText={(text) => this.setState({searchText:text})}
                                     style={styles.textInput}/>
-                        <Text style={styles.textAction}>+</Text>
                     </View>
                     <ListView
                         dataSource={this.state.conversations}
