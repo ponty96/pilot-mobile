@@ -14,6 +14,8 @@ import React,{
     ScrollView
 } from 'react-native';
 
+import Swipeout from 'react-native-swipeout'
+
 import Drawer from '../components/drawer-screen';
 import SearchBar from 'react-native-search-bar'
 const { width, height } = Dimensions.get('window');
@@ -143,6 +145,8 @@ const styles = StyleSheet.create({
 
 });
 
+
+
 export default class ConversationsScreen extends Component {
     constructor(props) {
         super(props);
@@ -152,8 +156,11 @@ export default class ConversationsScreen extends Component {
         this.state = {
             navigationOpen: false,
             searchText:"",
-            conversations:ds
+            conversations:ds,
+            scrollEnabled: true
         }
+
+
     }
 
     componentWillMount(){
@@ -162,20 +169,55 @@ export default class ConversationsScreen extends Component {
         })
     }
 
-    renderRow = (rowData) => {
+    call = ({name,id}) => {
+        console.log('call', {name,id})
+    }
+
+    viewContact =  ({name,id}) => {
+        console.log('view', {name,id})
+    }
+
+    renderRow = (rowData, sectionID, rowID, highlightRow) => {
+       const swipeRightButtons = [
+            {
+                text:'Call',
+                right:[{
+                    text:'call me',
+                    underlayColor:"#ccc",
+                    onPress:this.call({name:rowData.name,id:rowID})
+                }]
+            },
+            {
+                text:'Contact',
+                right:[{
+                    text:"Contact me",
+                    underlayColor:"#ccc",
+                    onPress:this.viewContact({name:rowData.name,id:rowID})
+                }]
+            }
+        ]
         return (
-            <View style={styles.rowContainer}>
-                <Image source={{uri:rowData.contact_dp}} style={styles.dp}/>
-                <View style={styles.gridContainer}>
-                    <View style={styles.row}>
-                        <Text style={styles.name}>{rowData.contact_name}</Text>
-                        <Text style={styles.time}>{rowData.last_activity_time}</Text>
+            <Swipeout
+                right={swipeRightButtons}
+                rowID={rowID}
+                sectionID={sectionID}
+                autoClose='true'
+                backgroundColor= 'transparent'>
+                <View style={styles.rowContainer}>
+                    <Image source={{uri:rowData.contact_dp}} style={styles.dp}/>
+                    <View style={styles.gridContainer}>
+                        <View style={styles.row}>
+                            <Text style={styles.name}>{rowData.contact_name}</Text>
+                            <Text style={styles.time}>{rowData.last_activity_time}</Text>
+                        </View>
+                        <Text style={styles.last_msg}>{rowData.last_msg}</Text>
                     </View>
-                    <Text style={styles.last_msg}>{rowData.last_msg}</Text>
                 </View>
-            </View>
+            </Swipeout>
         )
     }
+
+
 
     toggleNav = () => {
         this.setState({navigationOpen: !this.state.navigationOpen})
