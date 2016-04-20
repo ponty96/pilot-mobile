@@ -21,7 +21,9 @@ const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     body: {
         flex: 1,
-        paddingTop: (height * 0.042)
+        paddingTop: (height * 0.042),
+        position:"relative",
+        flexDirection:"column"
     },
     rowSpace: {
         flexDirection: "row",
@@ -50,7 +52,8 @@ const styles = StyleSheet.create({
     },
     content:{
         paddingLeft:5,
-        paddingTop:20
+        paddingTop:20,
+        height:(height * 0.75)
     },
     row:{
         flex:1,
@@ -101,17 +104,15 @@ const styles = StyleSheet.create({
         width:26
     },
     inline:{
-        flex:1,
         flexDirection:"row",
         padding:5,
         borderWidth:1,
         marginLeft:6,
         marginTop:5,
         borderRadius:8,
-        borderColor:"#e5e5e5"
+        borderColor:"#e5e5e5",
     },
     inlineRight:{
-        flex:1,
         flexDirection:"row",
         padding:5,
         borderWidth:1,
@@ -124,10 +125,32 @@ const styles = StyleSheet.create({
         fontSize:14,
         marginTop:5,
         marginLeft:10
+    },
+    input:{
+        borderTopColor:"#e5e5e5",
+        borderTopWidth:1,
+        padding:10,
+        flexDirection:"row",
+        justifyContent:"space-between"
+    },
+    textInput:{
+        height:50,
+        width:(width * 0.85),
+        color:"#e8e8e8"
+    },
+    msgAction:{
+        height:29,
+        width:29,
+        marginTop:13
     }
 });
 
 export default class Conversation extends Component {
+    constructor(props){
+        super(props)
+        this.state = {text:""}
+    }
+
     render(){
         return(
             <View style={styles.body}>
@@ -142,42 +165,53 @@ export default class Conversation extends Component {
                 </View>
                 <View style={styles.content}>
 
-                        <View style={styles.row}>
-                            <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
-                            <View style={styles.column}>
-                                <Text style={styles.datetime}>5 Dic 22:30</Text>
-                                <Text style={styles.msgText}>Hello Nicolas, I thought you would like to know that we've been finally working on...</Text>
+                    <View style={styles.row}>
+                        <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
+                        <View style={styles.column}>
+                            <Text style={styles.datetime}>5 Dic 22:30</Text>
+                            <Text style={styles.msgText}>Hello Nicolas, I thought you would like to know that we've been finally working on...</Text>
+                        </View>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.column}>
+                            <Text style={styles.datetimeRight}>5 Dic 22:30</Text>
+                            <Text style={styles.msgTextRight}>Hello Nicolas, I thofddffddfdffdfdfddfdfdfdfdfdfdfdfdfdfdffdfdfddfdfdffddfdffdfdffdfught you would like to know that we've been finally working on...</Text>
+                        </View>
+                        <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
+                    </View>
+                    <View style={styles.row}>
+                        <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
+                        <View style={styles.column}>
+                            <Text style={styles.datetime}>5 Dic 22:30</Text>
+                            <View style={styles.inline}>
+                                <Image source={require('./../assets/images/phone.png')} style={styles.action_img}/>
+                                <Text style={styles.actionText}>Keslo calvcvfdfdfeeerredfled you</Text>
                             </View>
                         </View>
-                        <View style={styles.row}>
-                            <View style={styles.column}>
-                                <Text style={styles.datetimeRight}>5 Dic 22:30</Text>
-                                <Text style={styles.msgTextRight}>Hello Nicolas, I thofddffddfdffdfdfddfdfdfdfdfdfdfdfdfdfdffdfdfddfdfdffddfdffdfdffdfught you would like to know that we've been finally working on...</Text>
-                            </View>
-                            <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
-                        </View>
-                        <View style={styles.row}>
-                            <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
-                            <View style={styles.column}>
-                                <Text style={styles.datetime}>5 Dic 22:30</Text>
-                                <View style={styles.inline}>
-                                    <Image source={require('./../assets/images/phone.png')} style={styles.action_img}/>
-                                    <Text style={styles.actionText}>Keslo calvcvfdfdfeeerredfled you</Text>
-                                </View>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.column}>
+                            <Text style={styles.datetimeRight}>5 Dic 22:30</Text>
+                            <View style={styles.inlineRight}>
+                                <Image source={require('./../assets/images/phone.png')} style={styles.action_img}/>
+                                <Text style={styles.actionText}>You sent a voice note to bla bla bla</Text>
                             </View>
                         </View>
-                        <View style={styles.row}>
-                            <View style={styles.column}>
-                                <Text style={styles.datetimeRight}>5 Dic 22:30</Text>
-                                <View style={styles.inlineRight}>
-                                    <Image source={require('./../assets/images/phone.png')} style={styles.action_img}/>
-                                    <Text style={styles.actionText}>Keslo called you</Text>
-                                </View>
-                            </View>
-                            <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
-                        </View>
+                        <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
+                    </View>
 
                 </View>
+                <View style={styles.input}>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(text) => this.setState({text:text})}
+                        placeholder="Type a message"/>
+                    <TouchableHighlight>
+                        <Image source={require('./../assets/images/phone.png')} style={styles.msgAction}/>
+                    </TouchableHighlight>
+                </View>
+
+
 
             </View>
         )
