@@ -19,7 +19,7 @@ import {DefaultRenderer} from 'react-native-router-flux';
 const { width, height } = Dimensions.get('window');
 
 const sideBarActionsList = [
-    {image:require('./../assets/images/conversation.png'), name:"Conversations", count:23, key:"conversation_screen"},
+    {image:require('./../assets/images/conversation.png'), name:"Conversations", count:23, key:"conversations_screen"},
     {image:require('./../assets/images/trash.png'), name:"Trash", count:14},
     {image:require('./../assets/images/later.png'), name:"Later", count:2},
     {image:require('./../assets/images/archive.png'), name:"Archive", count:0},

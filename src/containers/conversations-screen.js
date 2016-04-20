@@ -66,7 +66,9 @@ const styles = StyleSheet.create({
     rowSpace: {
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: 5
+        padding: 5,
+        borderBottomWidth:1,
+        borderBottomColor:"#ccc"
     },
     imageB: {
         height: 32,
