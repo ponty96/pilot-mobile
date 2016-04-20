@@ -11,6 +11,8 @@ import React,{
     Dimensions
 } from 'react-native';
 
+import { Actions } from 'react-native-router-flux' //for routing and stuffs
+
 const { width, height } = Dimensions.get('window');
 const marginTop = height - (height * 0.80);
 
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
         padding:5,
         paddingLeft:10,
         marginBottom:15,
-        color:"#e5e5e5"
+        color:"#666"
     },
     searchButton : {
         width:(width * 0.9),
@@ -59,8 +61,8 @@ const styles = StyleSheet.create({
         height:42,
         paddingLeft:30,
         paddingRight:30,
-        backgroundColor:"#1abc9c",
-        borderColor:"#1abc9c",
+        backgroundColor:"#46BD96",
+        borderColor:"#46BD96",
         borderWidth:1,
         borderRadius:5
     },
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
     },
     textGreen:{
         textAlign:"center",
-        color:"#1abc9c",
+        color:"#46BD96",
         fontWeight:"300"
     },
     textGrey:{
@@ -80,6 +82,7 @@ const styles = StyleSheet.create({
         marginRight:10
     }
 })
+
 export default class LoginScreen extends Component {
     constructor(props){
         super(props);
@@ -87,6 +90,15 @@ export default class LoginScreen extends Component {
             emailAddress:"",
             password:""
         }
+    }
+
+    onSignIn(){
+        //dispatch login action here
+        // for now just route
+        const email =  this.state.emailAddress;
+        const password =  this.state.password;
+        console.log('clicked')
+        Actions.contact_screen()
     }
     render(){
         return (
@@ -113,7 +125,7 @@ export default class LoginScreen extends Component {
                         <TouchableHighlight
                             style={styles.searchButton}
                             underlayColor="#ccc"
-                            onPress={() => console.log('fdddffdfffdffdfdfd')}>
+                            onPress={() => this.onSignIn()}>
                             <Text style={styles.search_btn_text}>Sign In</Text>
                         </TouchableHighlight>
                     </View>
