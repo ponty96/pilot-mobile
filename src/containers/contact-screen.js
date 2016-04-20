@@ -1,5 +1,5 @@
 /**
- * Created by ponty on 14/04/2016.
+ * Created by ponty on 20/04/2016.
  */
 import React,{
     Component,
@@ -14,21 +14,23 @@ import React,{
     ScrollView
 } from 'react-native';
 
-import Drawer from '../components/drawer-screen';
-import _ from 'lodash';
-
+import { Actions } from 'react-native-router-flux'
 const { width, height } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
     body: {
         flex: 1,
-        paddingTop: (height * 0.042)
+        paddingTop: (height * 0.042),
+        position:"relative",
+        flexDirection:"column"
     },
     rowSpace: {
         flexDirection: "row",
         justifyContent: "space-between",
         padding: 5,
         borderBottomWidth:1,
-        borderBottomColor:"#ccc"
+        borderBottomColor:"#e5e5e5",
+        marginTop:12
     },
     imageB: {
         height: 32,
@@ -38,151 +40,179 @@ const styles = StyleSheet.create({
     },
     textHeader: {
         textAlign: "center",
-        marginTop: 12,
-        fontSize: 18,
-        fontWeight: "bold",
-        color:"#525455"
+        marginTop: 10,
+        fontSize: 16,
+        fontWeight: "bold"
     },
     textAction: {
         textAlign: "center",
-        marginTop: 1,
-        fontSize: 32,
-        fontWeight: "bold",
-        color: "#46BD96"
-    },
-    headSec:{
-        margin:12,
-    },
-    tag:{
+        marginTop: 10,
+        marginRight:5,
         fontSize: 16,
-        fontWeight: "bold",
         color: "#46BD96"
     },
-    rowContainer: {
-        borderBottomWidth: 1,
-        borderBottomColor: "#e5e5e5",
-        padding:15,
-        marginLeft:35,
-        marginRight:35,
+    content:{
+        paddingLeft:5,
+        paddingTop:20,
+        height:(height * 0.75)
+    },
+    row:{
+        flex:1,
+        flexDirection:"row",
+        justifyContent:"space-between",
+        padding:10,
+        paddingLeft:0
+    },
+    textRow:{
+        flex:1,
+        flexDirection:"row",
+        justifyContent:"space-between",
+        padding:10,
+        marginRight:(width * 0.15)
+    },
+    column:{
+        flex:1,
+        flexDirection:"column",
+        borderBottomWidth:1,
+        borderBottomColor:"#e5e5e5",
+        marginLeft:15,
+        marginRight:10
+    },
+    colBlock:{
+        flex:1,
+        flexDirection:"column",
+        borderBottomWidth:1,
+        borderBottomColor:"#e5e5e5",
+        marginLeft:15,
+        marginRight:10,
+        paddingTop:20,
+        paddingBottom:20
+    },
+    navRow:{
         flexDirection:"row"
     },
-    first_name:{
-        fontSize:16,
-        marginRight:5,
-        color:"#868788"
+    navText:{
+        marginTop:12,
+        color:"#46BD96"
     },
-    last_name:{
-        fontSize:16,
+    dp:{
+        height:100,
+        width:100,
+        borderRadius:50
+    },
+    centralBlock:{
+        flex:1,
+        flexDirection:"column",
+        alignItems:"center",
+        marginTop:40
+    },
+    contactName:{
+        fontSize:18,
         fontWeight:"bold",
-        color:"#777"
+        marginTop:20
     },
-    textInput:{
-        borderWidth:1,
-        borderColor:"#e5e5e5",
-        borderRadius:5,
-        height:30,
-        width:(width * 0.9),
-        alignSelf:"center",
-        padding:5,
-        paddingLeft:10,
-        marginBottom:15,
-        color:"#666",
-        textAlign:"center"
+    actionRow:{
+        flexDirection:"row",
+        justifyContent:"space-between",
+        width:80,
+        marginTop:8
+    },
+    msgAction:{
+        height:29,
+        width:29
+    },
+    text:{
+        fontSize:18
+    },
+    smallText:{
+        fontSize:14,
+        marginTop:4
+    },
+    redText:{
+        fontSize:18,
+        color:"red"
+    },
+    delBlock:{
+        flex:1,
+        flexDirection:"column",
+        borderBottomWidth:1,
+        borderBottomColor:"#e5e5e5",
+        borderTopWidth:1,
+        borderTopColor:"#e5e5e5",
+        marginLeft:15,
+        marginRight:10,
+        paddingTop:20,
+        paddingBottom:20,
+        marginTop:80,
     }
-
-});
-
-
-const dummyContacts = [
-    {name:"A", isGroup:true},
-    {name: "Aregbede Ayomide"},
-    {name: "Andrew Johnson"},
-    {name:"B", isGroup:true},
-    {name: "Blake Haskell"},
-    {name: "Blaine Hatab"},
-    {name:"D", isGroup:true},
-    {name: "Dan Abranamov"},
-    {name: "Dunderfelt Samuel"},
-    {name:"S", isGroup:true},
-    {name: "Scott J"},
-    {name:"J", isGroup:true},
-    {name: "Jim Web"},
-    {name: "Jim Fanghou"},
-    {name: "Jim Farewell"},
-    {name: "Jim Brick"},
-    {name: "Jim Fushemoceta"}
-]
-
+})
 
 export default class ContactScreen extends Component {
-    constructor(props) {
-        super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
-        this.state = {
-            navigationOpen: false,
-            contacts: ds,
-            groups:[],
-            search_q:""
-        }
-    }
-
-    componentWillMount() {
-        this.setState({
-            contacts: this.state.contacts.cloneWithRows(dummyContacts)
-        })
-    }
-    renderName = (row) => {
-        if(row.isGroup){
-            return <Text style={styles.tag}>{row.name}</Text>
-        } else {
-            return row.name.split(" ").map((content,index) => {
-                return <Text style={index != 0 ? styles.last_name : styles.first_name} key={index}>
-                    {content}</Text>
-            })
-        }
-    }
-    renderRow = (rowData) => {
+    render(){
         return (
-
-                <View style={rowData.isGroup ? styles.headSec : styles.rowContainer}>
-                    {this.renderName(rowData)}
-                </View>
-        )
-    }
-
-
-    toggleNav = () => {
-        this.setState({navigationOpen: !this.state.navigationOpen})
-    }
-
-    render() {
-        return (
-            <Drawer isOpen={this.state.navigationOpen} activeRouteId={4}>
-                <View style={styles.body}>
-                    <View style={styles.rowSpace}>
-                        <TouchableHighlight
-                            onPress={this.toggleNav}
-                            underlayColor="#46BD96">
+            <View>
+                <View style={styles.rowSpace}>
+                    <TouchableHighlight
+                        onPress={() => Actions.pop()}
+                        underlayColor="#46BD96">
+                        <View style={styles.navRow}>
                             <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
-                        </TouchableHighlight>
-                        <Text style={styles.textHeader}>Contacts</Text>
-                        <Text style={styles.textAction}>+</Text>
-                    </View>
-                    <View>
-                        <TextInput
-                            placeholder="Search"
-                            text={this.state.search_q}
-                            onChangeText={(text) => this.setState({search_q:text})}
-                            style={styles.textInput}
-                        />
-                    </View>
-                    <ListView
-                        dataSource={this.state.contacts}
-                        renderRow={this.renderRow}>
-                    </ListView>
+                            <Text style={styles.navText}>All Contacts</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <Text style={styles.textAction}>Edit</Text>
                 </View>
-            </Drawer>
+                <View style={styles.centralBlock}>
+                    <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
+                    <Text style={styles.contactName}>Blaine Hatab</Text>
+                </View>
+                <View style={styles.column}>
+                    <View style={styles.row}>
+                        <View style={styles.textRow}>
+                            <Text style={styles.smallText}>Work</Text>
+                            <Text style={styles.text}>261 3067 331</Text>
+                        </View>
+                        <View style={styles.actionRow}>
+                            <TouchableHighlight>
+                                <Image source={require('./../assets/images/conversation.png')} style={styles.msgAction}/>
+                            </TouchableHighlight>
+                            <TouchableHighlight>
+                                <Image source={require('./../assets/images/phone.png')} style={styles.msgAction}/>
+                            </TouchableHighlight>
+                        </View>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.textRow}>
+                            <Text style={styles.smallText}>Home</Text>
+                            <Text style={styles.text}>261 3067 331</Text>
+                        </View>
+                        <View style={styles.actionRow}>
+                            <TouchableHighlight>
+                                <Image source={require('./../assets/images/conversation.png')} style={styles.msgAction}/>
+                            </TouchableHighlight>
+                            <TouchableHighlight>
+                                <Image source={require('./../assets/images/phone.png')} style={styles.msgAction}/>
+                            </TouchableHighlight>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.colBlock}>
+                    <Text style={styles.text}>
+                        nico@redstamp.ca
+                    </Text>
+                </View>
+                <View style={styles.colBlock}>
+                    <Text style={styles.text}>
+                        Terrada 3091 Lujan de Cuyo. Mza.
+                    </Text>
+                </View>
+                <TouchableHighlight style={styles.delBlock}>
+                    <Text style={styles.redText}>
+                        Delete
+                    </Text>
+                </TouchableHighlight>
 
+            </View>
         )
     }
 }
