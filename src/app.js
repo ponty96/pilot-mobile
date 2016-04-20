@@ -35,8 +35,9 @@ export default class PilotApp extends Component {
             <Router style={styles.container} sceneStyle={styles.sceneStyle}>
                 <Scene key="root">
                     <Scene key="conversation_screen" component={ConversationsScreen} title="Conversations" hideNavBar={true}/>
-                    <Scene key="contact_screen" component={ContactScreen} title="Contact" hideNavBar={true}/>
                     <Scene key="login_screen" component={LoginScreen} title="Login" hideNavBar={true}/>
+
+                    <Scene key="contacts_screen" component={ContactScreen} title="Contact" hideNavBar={true}/>
                 </Scene>
             </Router>
         )

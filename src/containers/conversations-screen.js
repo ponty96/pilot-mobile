@@ -37,21 +37,21 @@ const dummy_conversations = [
     },
     {
         contact_dp:"https://pbs.twimg.com/profile_images/553711083064541184/9VsY9i09_bigger.jpeg",
-        contact_name:"James Long",
+        contact_name:"Dan Abramov",
         last_msg:"You fucking slept with my girlfriend",
         last_activity_time:"Yesterday, 20:35",
         conversation_id:""
     },
     {
         contact_dp:"https://pbs.twimg.com/profile_images/622146266823155712/RjmeRIOn_bigger.jpg",
-        contact_name:"Dan Abramov",
+        contact_name:"James Long",
         last_msg:"I love redux, Do IT EVERY DAY!!!!!",
         last_activity_time:"Yesterday, 03:35",
         conversation_id:""
     },
     {
         contact_dp:"https://pbs.twimg.com/profile_images/639314683/vjeux-twitter_bigger.PNG",
-        contact_name:"Aaron Ackerman",
+        contact_name:"Vjuex",
         last_msg:"BLA BLA BLA BLA BLA BLA BLA BLA; Its whatever",
         last_activity_time:"Yesterday, 20:35",
         conversation_id:""
@@ -197,7 +197,7 @@ export default class ConversationsScreen extends Component {
                 text:'Call',
                 backgroundColor:"#4ABD92",
                 underlayColor:"#4ABD92",
-                onPress:this.call({name:rowData.name,id:rowID}),
+                onPress:() => this.call({name:rowData.name,id:rowID}),
                 component: <Image style={{flex: 1}} source={require('./../assets/images/phone.png')} style={styles.btnIcon}/>
 
             },
@@ -205,7 +205,7 @@ export default class ConversationsScreen extends Component {
                 text:'Contact',
                 backgroundColor:"#C469D7",
                 underlayColor:"#C469D7",
-                onPress:this.viewContact({name:rowData.name,id:rowID}),
+                onPress:() => this.viewContact({name:rowData.name,id:rowID}),
                 component: <Image style={{flex: 1}} source={require('./../assets/images/dp.png')} style={styles.btnIcon}/>
 
             }
@@ -215,7 +215,7 @@ export default class ConversationsScreen extends Component {
                 text:'Later',
                 backgroundColor:"#F6BD5E",
                 underlayColor:"#F6BD5E",
-                onPress:this.saveForLater({name:rowData.name,id:rowID}),
+                onPress:() => this.saveForLater({name:rowData.name,id:rowID}),
                 component: <Image style={{flex: 1}} source={require('./../assets/images/later.png')} style={styles.btnIcon}/>
 
             },
@@ -223,7 +223,7 @@ export default class ConversationsScreen extends Component {
                 text:'Archive',
                 backgroundColor:"#6C9FB8",
                 underlayColor:"#6C9FB8",
-                onPress:this.archiveConvo({name:rowData.name,id:rowID}),
+                onPress:() => this.archiveConvo({name:rowData.name,id:rowID}),
                 component: <Image style={{flex: 1}} source={require('./../assets/images/download.png')} style={styles.btnIcon}/>
 
             }

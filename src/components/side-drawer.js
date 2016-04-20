@@ -16,6 +16,7 @@ import React,{
 
 
 const { width, height } = Dimensions.get('window');
+import { Actions } from 'react-native-router-flux'
 
 const styles = StyleSheet.create({
     body:{
@@ -84,9 +85,18 @@ export default class SideDrawer extends Component {
             dataSource:this.state.dataSource.cloneWithRows(this.props.routes)
         })
     }
+
+    route = (ID) => {
+        const section = this.props.routes[ID]
+        const fn = Actions[section.key]
+        fn()
+    }
     renderRow = (rowData, sectionID, rowID, highlightRow) => {
         const rowStyle = rowID == this.props.activeRouteId ? styles.rowSpaceActive : styles.rowSpace;
         return (
+            <TouchableHighlight
+                underlayColor="#6C9FB8"
+                onPress={() => this.route(rowID)}>
             <View style={rowStyle}>
                 <View style={styles.row}>
                     <Image source={rowData.image} style={styles.image}/>
@@ -94,6 +104,7 @@ export default class SideDrawer extends Component {
                 </View>
                 <Text style={styles.text}>{rowData.count !== null ? rowData.count : ""}</Text>
             </View>
+          </TouchableHighlight>
         )
     }
     render(){
