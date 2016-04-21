@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     text:{
         color:"#fff",
         fontSize:15,
-        margin:10
+        margin:10,
+        fontFamily:"ProximaNovaA-Regular"
     },
     closeBtn:{
         width:20,
