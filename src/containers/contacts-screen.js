@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         padding: 5,
         borderBottomWidth:1,
-        borderBottomColor:"#ccc"
+        borderBottomColor:"#BBC3C8"
     },
     imageB: {
         height: 32,

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         padding: 5,
         borderBottomWidth:1,
-        borderBottomColor:"#6F7B7E"
+        borderBottomColor:"#BBC3C8"
     },
     imageB: {
         height: 32,
