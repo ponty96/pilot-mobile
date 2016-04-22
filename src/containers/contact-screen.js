@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         marginTop:12
     },
     imageB: {
-        height: 32,
-        width: 32,
+        height: 18,
+        width: 18,
         margin: 5,
         alignSelf: "flex-start"
     },
@@ -89,10 +89,11 @@ const styles = StyleSheet.create({
         paddingBottom:20
     },
     navRow:{
-        flexDirection:"row"
+        flexDirection:"row",
+        marginTop:5
     },
     navText:{
-        marginTop:12,
+        marginTop:5,
         color:"#46BD92"
     },
     dp:{
@@ -160,7 +161,7 @@ export default class ContactScreen extends Component {
                         onPress={() => Actions.pop()}
                         underlayColor="#46BD96">
                         <View style={styles.navRow}>
-                            <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
+                            <Image source={require('./../assets/images/group@3x.png')} style={styles.imageB}/>
                             <Text style={styles.navText}>All Contacts</Text>
                         </View>
                     </TouchableHighlight>

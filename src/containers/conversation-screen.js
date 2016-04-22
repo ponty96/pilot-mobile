@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         borderBottomColor:"#BBC3C8"
     },
     imageB: {
-        height: 32,
-        width: 32,
+        height: 18,
+        width:  18,
         margin: 5,
         alignSelf: "flex-start"
     },
@@ -52,10 +52,11 @@ const styles = StyleSheet.create({
         color: "#46BD92"
     },
     navRow:{
-        flexDirection:"row"
+        flexDirection:"row",
+        marginTop:5
     },
     navText:{
-        marginTop:12,
+        marginTop:5,
         color:"#46BD92"
     },
     content:{
@@ -177,8 +178,8 @@ export default class Conversation extends Component {
                         onPress={() => Actions.pop()}
                         underlayColor="#46BD96">
                         <View style={styles.navRow}>
-                            <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
-                            <Text style={styles.navText}>All Contacts</Text>
+                            <Image source={require('./../assets/images/group@3x.png')} style={styles.imageB}/>
+                            <Text style={styles.navText}>Conversations</Text>
                         </View>
                     </TouchableHighlight>
                     <Text style={styles.textHeader}>Kelso Kennedy</Text>

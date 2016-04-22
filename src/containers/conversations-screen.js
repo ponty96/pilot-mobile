@@ -15,10 +15,9 @@ import React,{
 } from 'react-native';
 
 import Swipeout from 'react-native-swipeout'
-
 import Drawer from '../components/drawer-screen';
 import SearchBar from 'react-native-search-bar'
-
+import { Actions } from 'react-native-router-flux'
 const { width, height } = Dimensions.get('window');
 
 const dummy_conversations = [
@@ -240,13 +239,20 @@ export default class ConversationsScreen extends Component {
                 sectionID={sectionID}
                 autoClose='true'
                 backgroundColor= 'transparent'>
-                <View style={styles.rowContainer}>
+                <View
+                    style={styles.rowContainer}
+                    >
                     <Image source={{uri:rowData.contact_dp}} style={styles.dp}/>
                     <View style={styles.gridContainer}>
-                        <View style={styles.row}>
-                            <Text style={styles.name}>{rowData.contact_name}</Text>
-                            <Text style={styles.time}>{rowData.last_activity_time}</Text>
-                        </View>
+                        <TouchableHighlight
+                            style={styles.row}
+                            onPress={() => Actions.conversation_screen()}
+                            underlayColor="transparent">
+                            <View>
+                                <Text style={styles.name}>{rowData.contact_name}</Text>
+                                <Text style={styles.time}>{rowData.last_activity_time}</Text>
+                            </View>
+                        </TouchableHighlight>
                         <Text style={styles.last_msg}>{rowData.last_msg}</Text>
                     </View>
                 </View>

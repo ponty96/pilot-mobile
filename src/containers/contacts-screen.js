@@ -15,6 +15,7 @@ import React,{
 } from 'react-native';
 
 import Drawer from '../components/drawer-screen';
+import { Actions } from 'react-native-router-flux'
 import _ from 'lodash';
 
 const { width, height } = Dimensions.get('window');
@@ -149,9 +150,14 @@ export default class ContactsScreen extends Component {
     renderRow = (rowData) => {
         return (
 
-                <View style={rowData.isGroup ? styles.headSec : styles.rowContainer}>
-                    {this.renderName(rowData)}
-                </View>
+                <TouchableHighlight
+
+                    onPress={() => Actions.view_contact()}
+                    underlayColor="transparent">
+                    <View style={rowData.isGroup ? styles.headSec : styles.rowContainer}>
+                        {this.renderName(rowData)}
+                    </View>
+                </TouchableHighlight>
         )
     }
 
