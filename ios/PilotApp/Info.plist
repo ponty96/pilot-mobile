@@ -4,7 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>HelveticaLT53Extended.tff</string>
+		<string>ProximaNovaAltBlack.otf</string>
+		<string>ProximaNovaAltBold.otf</string>
+		<string>ProximaNovaAltExtrabold.otf</string>
+		<string>ProximaNovaAltLight.otf</string>
+		<string>ProximaNovaAltRegular.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

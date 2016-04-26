@@ -15,9 +15,9 @@ import React,{
 } from 'react-native';
 
 import Swipeout from 'react-native-swipeout'
-
 import Drawer from '../components/drawer-screen';
 import SearchBar from 'react-native-search-bar'
+import { Actions } from 'react-native-router-flux'
 const { width, height } = Dimensions.get('window');
 
 const dummy_conversations = [
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         padding: 5,
         borderBottomWidth:1,
-        borderBottomColor:"#ccc"
+        borderBottomColor:"#BBC3C8"
     },
     imageB: {
         height: 32,
@@ -80,14 +80,13 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginTop: 12,
         fontSize: 18,
-        fontWeight: "bold",
-        color:"#525455"
+
     },
     textAction: {
         textAlign: "center",
         marginTop: -3,
         fontSize: 35,
-        color: "#46BD96"
+        color: "#46BD92"
     },
     textInput:{
         borderWidth:1,
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
         width:(width * 0.9),
         alignSelf:"center",
         marginBottom:15,
-        color:"#666",
+        color:"#6F7B7E",
         textAlign:"center",
         marginTop: 7.5
     },
@@ -138,17 +137,18 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize:18,
-        color:"#868788",
-        fontWeight:"bold"
+        fontFamily:"Proxima Nova Alt"
     },
     time: {
         fontSize:13,
-        color:"#E0E6EA",
-        marginTop:2.5
+        color:"#BBC3C8",
+        marginTop:2.5,
+        fontFamily:"ProximaNovaA-Regular"
     },
     last_msg:{
         marginTop:10,
-        color:"#868788"
+        fontFamily:"ProximaNovaA-Regular",
+        color:"#6F7B7E"
     }
 
 });
@@ -239,13 +239,20 @@ export default class ConversationsScreen extends Component {
                 sectionID={sectionID}
                 autoClose='true'
                 backgroundColor= 'transparent'>
-                <View style={styles.rowContainer}>
+                <View
+                    style={styles.rowContainer}
+                    >
                     <Image source={{uri:rowData.contact_dp}} style={styles.dp}/>
                     <View style={styles.gridContainer}>
-                        <View style={styles.row}>
-                            <Text style={styles.name}>{rowData.contact_name}</Text>
-                            <Text style={styles.time}>{rowData.last_activity_time}</Text>
-                        </View>
+                        <TouchableHighlight
+                            style={styles.row}
+                            onPress={() => Actions.conversation_screen()}
+                            underlayColor="transparent">
+                            <View>
+                                <Text style={styles.name}>{rowData.contact_name}</Text>
+                                <Text style={styles.time}>{rowData.last_activity_time}</Text>
+                            </View>
+                        </TouchableHighlight>
                         <Text style={styles.last_msg}>{rowData.last_msg}</Text>
                     </View>
                 </View>
@@ -269,8 +276,6 @@ export default class ConversationsScreen extends Component {
                             underlayColor="#46BD96">
                             <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
                         </TouchableHighlight>
-
-
                         <Text style={styles.textAction}>+</Text>
                     </View>
                     <View>

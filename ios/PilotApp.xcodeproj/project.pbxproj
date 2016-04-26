@@ -22,6 +22,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		F2D45BC51CC8A16200D7574C /* ProximaNovaAltBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = F2D45BC01CC8A16200D7574C /* ProximaNovaAltBlack.otf */; };
+		F2D45BC61CC8A16200D7574C /* ProximaNovaAltBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F2D45BC11CC8A16200D7574C /* ProximaNovaAltBold.otf */; };
+		F2D45BC71CC8A16200D7574C /* ProximaNovaAltExtrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F2D45BC21CC8A16200D7574C /* ProximaNovaAltExtrabold.otf */; };
+		F2D45BC81CC8A16200D7574C /* ProximaNovaAltLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F2D45BC31CC8A16200D7574C /* ProximaNovaAltLight.otf */; };
+		F2D45BC91CC8A16200D7574C /* ProximaNovaAltRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F2D45BC41CC8A16200D7574C /* ProximaNovaAltRegular.otf */; };
 		F34AA067C236477D9CB99A80 /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100D6CAFE4E146AC96C59DA2 /* libRNSearchBar.a */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +141,11 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		AFB0A30925604E18902D3567 /* RNSearchBar.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSearchBar.xcodeproj; path = "../node_modules/react-native-search-bar/RNSearchBar.xcodeproj"; sourceTree = "<group>"; };
+		F2D45BC01CC8A16200D7574C /* ProximaNovaAltBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ProximaNovaAltBlack.otf; path = ../src/assets/fonts/ProximaNovaAltBlack.otf; sourceTree = "<group>"; };
+		F2D45BC11CC8A16200D7574C /* ProximaNovaAltBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ProximaNovaAltBold.otf; path = ../src/assets/fonts/ProximaNovaAltBold.otf; sourceTree = "<group>"; };
+		F2D45BC21CC8A16200D7574C /* ProximaNovaAltExtrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ProximaNovaAltExtrabold.otf; path = ../src/assets/fonts/ProximaNovaAltExtrabold.otf; sourceTree = "<group>"; };
+		F2D45BC31CC8A16200D7574C /* ProximaNovaAltLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ProximaNovaAltLight.otf; path = ../src/assets/fonts/ProximaNovaAltLight.otf; sourceTree = "<group>"; };
+		F2D45BC41CC8A16200D7574C /* ProximaNovaAltRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ProximaNovaAltRegular.otf; path = ../src/assets/fonts/ProximaNovaAltRegular.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +309,11 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F2D45BC01CC8A16200D7574C /* ProximaNovaAltBlack.otf */,
+				F2D45BC11CC8A16200D7574C /* ProximaNovaAltBold.otf */,
+				F2D45BC21CC8A16200D7574C /* ProximaNovaAltExtrabold.otf */,
+				F2D45BC31CC8A16200D7574C /* ProximaNovaAltLight.otf */,
+				F2D45BC41CC8A16200D7574C /* ProximaNovaAltRegular.otf */,
 				13B07FAE1A68108700A75B9A /* PilotApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PilotAppTests */,
@@ -537,7 +552,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				F2D45BC51CC8A16200D7574C /* ProximaNovaAltBlack.otf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				F2D45BC91CC8A16200D7574C /* ProximaNovaAltRegular.otf in Resources */,
+				F2D45BC81CC8A16200D7574C /* ProximaNovaAltLight.otf in Resources */,
+				F2D45BC71CC8A16200D7574C /* ProximaNovaAltExtrabold.otf in Resources */,
+				F2D45BC61CC8A16200D7574C /* ProximaNovaAltBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

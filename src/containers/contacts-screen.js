@@ -15,9 +15,13 @@ import React,{
 } from 'react-native';
 
 import Drawer from '../components/drawer-screen';
+import { Actions } from 'react-native-router-flux'
 import _ from 'lodash';
 
 const { width, height } = Dimensions.get('window');
+
+import SearchBar from 'react-native-search-bar'
+
 const styles = StyleSheet.create({
     body: {
         flex: 1,
@@ -28,7 +32,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         padding: 5,
         borderBottomWidth:1,
-        borderBottomColor:"#ccc"
+        borderBottomColor:"#BBC3C8"
     },
     imageB: {
         height: 32,
@@ -39,16 +43,18 @@ const styles = StyleSheet.create({
     textHeader: {
         textAlign: "center",
         marginTop: 12,
-        fontSize: 18,
-        fontWeight: "bold",
-        color:"#525455"
+        fontSize: 16,
+        fontFamily:"ProximaNovaA-Regular"
     },
     textAction: {
         textAlign: "center",
         marginTop: 1,
         fontSize: 32,
         fontWeight: "bold",
-        color: "#46BD96"
+        color: "#46BD92"
+    },
+    content:{
+        paddingTop:6
     },
     headSec:{
         margin:12,
@@ -56,7 +62,7 @@ const styles = StyleSheet.create({
     tag:{
         fontSize: 16,
         fontWeight: "bold",
-        color: "#46BD96"
+        color: "#46BD92"
     },
     rowContainer: {
         borderBottomWidth: 1,
@@ -69,12 +75,12 @@ const styles = StyleSheet.create({
     first_name:{
         fontSize:16,
         marginRight:5,
-        color:"#868788"
+        fontFamily:"ProximaNovaA-Light"
     },
     last_name:{
         fontSize:16,
-        fontWeight:"bold",
-        color:"#777"
+        fontFamily:"Proxima Nova Alt",
+        fontWeight:"500"
     },
     textInput:{
         borderWidth:1,
@@ -144,9 +150,14 @@ export default class ContactsScreen extends Component {
     renderRow = (rowData) => {
         return (
 
-                <View style={rowData.isGroup ? styles.headSec : styles.rowContainer}>
-                    {this.renderName(rowData)}
-                </View>
+                <TouchableHighlight
+
+                    onPress={() => Actions.view_contact()}
+                    underlayColor="transparent">
+                    <View style={rowData.isGroup ? styles.headSec : styles.rowContainer}>
+                        {this.renderName(rowData)}
+                    </View>
+                </TouchableHighlight>
         )
     }
 
@@ -168,18 +179,18 @@ export default class ContactsScreen extends Component {
                         <Text style={styles.textHeader}>Contacts</Text>
                         <Text style={styles.textAction}>+</Text>
                     </View>
-                    <View>
-                        <TextInput
-                            placeholder="Search"
-                            text={this.state.search_q}
-                            onChangeText={(text) => this.setState({search_q:text})}
-                            style={styles.textInput}
-                        />
+                    <View style={styles.content}>
+                        <View>
+                            <SearchBar  ref="searchBar"
+                                        placeholder="Search"
+                                        onChangeText={(text) => this.setState({search_q:text})}
+                                        style={styles.textInput}/>
+                        </View>
+                        <ListView
+                            dataSource={this.state.contacts}
+                            renderRow={this.renderRow}>
+                        </ListView>
                     </View>
-                    <ListView
-                        dataSource={this.state.contacts}
-                        renderRow={this.renderRow}>
-                    </ListView>
                 </View>
             </Drawer>
 

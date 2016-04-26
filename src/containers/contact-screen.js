@@ -29,12 +29,12 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         padding: 5,
         borderBottomWidth:1,
-        borderBottomColor:"#e5e5e5",
+        borderBottomColor:"#BBC3C8",
         marginTop:12
     },
     imageB: {
-        height: 32,
-        width: 32,
+        height: 18,
+        width: 18,
         margin: 5,
         alignSelf: "flex-start"
     },
@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginTop: 10,
         fontSize: 16,
-        fontWeight: "bold"
+        fontFamily:"ProximaNovaA-Regular"
     },
     textAction: {
         textAlign: "center",
         marginTop: 10,
         marginRight:5,
         fontSize: 16,
-        color: "#46BD96"
+        color: "#46BD92"
     },
     content:{
         paddingLeft:5,
@@ -89,11 +89,12 @@ const styles = StyleSheet.create({
         paddingBottom:20
     },
     navRow:{
-        flexDirection:"row"
+        flexDirection:"row",
+        marginTop:5
     },
     navText:{
-        marginTop:12,
-        color:"#46BD96"
+        marginTop:5,
+        color:"#46BD92"
     },
     dp:{
         height:100,
@@ -108,8 +109,9 @@ const styles = StyleSheet.create({
     },
     contactName:{
         fontSize:18,
-        fontWeight:"bold",
-        marginTop:20
+        marginTop:20,
+        fontFamily:"Proxima Nova Alt",
+        fontWeight:"500"
     },
     actionRow:{
         flexDirection:"row",
@@ -122,15 +124,18 @@ const styles = StyleSheet.create({
         width:29
     },
     text:{
-        fontSize:18
+        fontSize:18,
+        fontFamily:"ProximaNovaA-Regular"
     },
     smallText:{
         fontSize:14,
-        marginTop:4
+        marginTop:4,
+        fontFamily:"ProximaNovaA-Regular"
     },
     redText:{
         fontSize:18,
-        color:"red"
+        color:"red",
+        fontFamily:"ProximaNovaA-Regular"
     },
     delBlock:{
         flex:1,
@@ -156,7 +161,7 @@ export default class ContactScreen extends Component {
                         onPress={() => Actions.pop()}
                         underlayColor="#46BD96">
                         <View style={styles.navRow}>
-                            <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
+                            <Image source={require('./../assets/images/group@3x.png')} style={styles.imageB}/>
                             <Text style={styles.navText}>All Contacts</Text>
                         </View>
                     </TouchableHighlight>
@@ -208,7 +213,7 @@ export default class ContactScreen extends Component {
                 </View>
                 <TouchableHighlight style={styles.delBlock}>
                     <Text style={styles.redText}>
-                        Delete
+                        Delete Contact
                     </Text>
                 </TouchableHighlight>
 

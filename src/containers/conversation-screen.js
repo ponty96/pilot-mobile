@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         padding: 5,
         borderBottomWidth:1,
-        borderBottomColor:"#ccc"
+        borderBottomColor:"#BBC3C8"
     },
     imageB: {
-        height: 32,
-        width: 32,
+        height: 18,
+        width:  18,
         margin: 5,
         alignSelf: "flex-start"
     },
@@ -42,13 +42,22 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginTop: 10,
         fontSize: 16,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontFamily:"Proxima Nova Alt",
     },
     textAction: {
         textAlign: "center",
         marginTop: -3,
         fontSize: 35,
-        color: "#46BD96"
+        color: "#46BD92"
+    },
+    navRow:{
+        flexDirection:"row",
+        marginTop:5
+    },
+    navText:{
+        marginTop:5,
+        color:"#46BD92"
     },
     content:{
         paddingLeft:5,
@@ -56,12 +65,12 @@ const styles = StyleSheet.create({
         height:(height * 0.75)
     },
     row:{
-        flex:1,
         flexDirection:"row",
         marginTop:10,
         marginLeft:8,
         marginRight:8,
-        marginBottom:10
+        marginBottom:10,
+        paddingBottom:5
     },
     column:{
         flex:1,
@@ -79,16 +88,22 @@ const styles = StyleSheet.create({
         borderRadius:8,
         marginLeft:10,
         fontSize:14,
-        textAlign:"center"
+        textAlign:"center",
+        fontFamily:"ProximaNovaA-Regular",
+        lineHeight:20
     },
     datetime:{
         marginLeft:10,
-        marginBottom:5
+        marginBottom:5,
+        fontFamily:"ProximaNovaA-Regular",
+        color:"#BBC3C8"
     },
     datetimeRight:{
         alignSelf:"flex-end",
         marginRight:10,
-        marginBottom:5
+        marginBottom:5,
+        fontFamily:"ProximaNovaA-Regular",
+        color:"#BBC3C8"
     },
     msgTextRight:{
         backgroundColor:"#46BD96",
@@ -97,7 +112,9 @@ const styles = StyleSheet.create({
         marginRight:6,
         fontSize:14,
         textAlign:"right",
-        color:"#fff"
+        color:"#fff",
+        fontFamily:"ProximaNovaA-Regular",
+        lineHeight:20
     },
     action_img:{
         height:26,
@@ -110,7 +127,7 @@ const styles = StyleSheet.create({
         marginLeft:6,
         marginTop:5,
         borderRadius:8,
-        borderColor:"#e5e5e5",
+        borderColor:"#BBC3C8"
     },
     inlineRight:{
         flexDirection:"row",
@@ -119,12 +136,13 @@ const styles = StyleSheet.create({
         marginRight:6,
         marginTop:5,
         borderRadius:8,
-        borderColor:"#e5e5e5"
+        borderColor:"#BBC3C8"
     },
     actionText:{
         fontSize:14,
         marginTop:5,
-        marginLeft:10
+        marginLeft:10,
+        fontFamily:"ProximaNovaA-Regular"
     },
     input:{
         borderTopColor:"#e5e5e5",
@@ -136,7 +154,8 @@ const styles = StyleSheet.create({
     textInput:{
         height:50,
         width:(width * 0.85),
-        color:"#e8e8e8"
+        color:"#e8e8e8",
+        fontFamily:"ProximaNovaA-Regular"
     },
     msgAction:{
         height:29,
@@ -158,7 +177,10 @@ export default class Conversation extends Component {
                     <TouchableHighlight
                         onPress={() => Actions.pop()}
                         underlayColor="#46BD96">
-                        <Image source={require('./../assets/images/menu-alt-512.png')} style={styles.imageB}/>
+                        <View style={styles.navRow}>
+                            <Image source={require('./../assets/images/group@3x.png')} style={styles.imageB}/>
+                            <Text style={styles.navText}>Conversations</Text>
+                        </View>
                     </TouchableHighlight>
                     <Text style={styles.textHeader}>Kelso Kennedy</Text>
                     <Text style={styles.textAction}>+</Text>
@@ -169,13 +191,13 @@ export default class Conversation extends Component {
                         <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
                         <View style={styles.column}>
                             <Text style={styles.datetime}>5 Dic 22:30</Text>
-                            <Text style={styles.msgText}>Hello Nicolas, I thought you would like to know that we've been finally working on...</Text>
+                            <Text style={styles.msgText}>Hello Nicolas, I thought you would like to knondfnfdjfkndjfnjndfkndfnjdfndfnjkdfnjkdfnjfdknfdjkdfnjw that we've been finally working on...</Text>
                         </View>
                     </View>
                     <View style={styles.row}>
                         <View style={styles.column}>
                             <Text style={styles.datetimeRight}>5 Dic 22:30</Text>
-                            <Text style={styles.msgTextRight}>Hello Nicolas, I thofddffddfdffdfdfddfdfdfdfdfdfdfdfdfdfdffdfdfddfdfdffddfdffdfdffdfught you would like to know that we've been finally working on...</Text>
+                            <Text style={styles.msgTextRight}>Hello Nicolas, I thofddfdfd ndfndfnkfdnjkfdnjkfdnjkndfjknfdjknfdjkndfjkkdfndjkffddfdffdfdfddfdfdfdfdfdfdfdfdfdfdffdfdfddfdfdffddfdffdfdffdfught you would like to know that we've been finally working on...</Text>
                         </View>
                         <Image source={require('./../assets/images/jbhatab.png')} style={styles.dp}/>
                     </View>
